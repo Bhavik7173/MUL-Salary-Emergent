@@ -226,6 +226,49 @@ export default function Settings() {
           </CardContent>
         </Card>
 
+        {/* AZK Hours Bank */}
+        <Card data-testid="azk-settings-card">
+          <CardHeader>
+            <CardTitle className="font-heading flex items-center gap-2">
+              <Hourglass className="w-5 h-5 text-primary" />
+              AZK Hours Bank
+            </CardTitle>
+            <CardDescription>
+              Manage your extra hours bank (automatic + manual adjustment)
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="p-4 bg-muted rounded-lg">
+              <p className="text-sm text-muted-foreground mb-2">
+                The AZK bank is automatically calculated based on your worked hours vs contract hours.
+                Use the manual adjustment below to add or subtract hours from your bank.
+              </p>
+            </div>
+            
+            <div className="space-y-2">
+              <Label htmlFor="manual_azk_adjustment">Manual AZK Adjustment (hours)</Label>
+              <Input
+                type="number"
+                step="0.5"
+                {...register('manual_azk_adjustment', { valueAsNumber: true })}
+                className="font-mono max-w-xs"
+                data-testid="azk-adjustment-input"
+              />
+              <p className="text-xs text-muted-foreground">
+                Positive value adds hours, negative subtracts. Current: {watchValues.manual_azk_adjustment || 0} hrs
+              </p>
+            </div>
+
+            <div className="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
+              <p className="text-sm text-blue-800 dark:text-blue-200">
+                <strong>How it works:</strong> Each month, if you work more than {watchValues.contract_hours} hours, 
+                the extra hours are added to your AZK bank. If you work less, hours are subtracted.
+                The manual adjustment is added on top of the automatic calculation.
+              </p>
+            </div>
+          </CardContent>
+        </Card>
+
         {/* Email Configuration */}
         <Card data-testid="email-settings-card">
           <CardHeader>
