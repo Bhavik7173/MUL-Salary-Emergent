@@ -96,6 +96,7 @@ class Settings(BaseModel):
     smtp_port: int = 587
     auto_email_day: int = 1
     dark_mode: bool = False
+    manual_azk_adjustment: float = 0.0  # Manual AZK bank adjustment
 
 class SettingsUpdate(BaseModel):
     hourly_rate: Optional[float] = None
@@ -108,6 +109,7 @@ class SettingsUpdate(BaseModel):
     smtp_server: Optional[str] = None
     smtp_port: Optional[int] = None
     auto_email_day: Optional[int] = None
+    manual_azk_adjustment: Optional[float] = None
     dark_mode: Optional[bool] = None
 
 class MonthlySummary(BaseModel):
