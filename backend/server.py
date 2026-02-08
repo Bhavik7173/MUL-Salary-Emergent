@@ -207,6 +207,9 @@ async def get_azk_bank_total(exclude_year: int = None, exclude_month: int = None
                 continue
         azk_total += r["total_hours"] - settings.contract_hours
     
+    # Add manual adjustment
+    azk_total += settings.manual_azk_adjustment
+    
     return round(azk_total, 2)
 
 # ============= WORK ENTRIES ROUTES =============
