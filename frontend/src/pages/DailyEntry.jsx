@@ -69,16 +69,45 @@ export default function DailyEntry() {
     },
   });
 
-  const watchAll = watch();
+  const startTime = watch('start_time');
+  const endTime = watch('end_time');
+  const breakHours = watch('break_hours');
+  const travelAllowance = watch('travel_allowance');
+  const isPublicHoliday = watch('is_public_holiday');
 
   useEffect(() => {
     fetchEntries();
     fetchSettings();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
-    calculatePreview();
-  }, [watchAll, settings]);
+    if (!settings) return;
+    
+    // Parse times
+    const start = new Date(`2000-01-01T${startTime || '00:00'}`);
+    const end = new Date(`2000-01-01T${endTime || '00:00'}`);
+    
+    let totalHours = (end - start) / 3600000;
+    if (totalHours < 0) totalHours += 24; // Handle overnight
+    
+    const workingHours = Math.max(0, totalHours - (breakHours || 0));
+    const bonus = workingHours >= 6 ? 1 : 0;
+    const multiplier = isPublicHoliday ? 1.5 : 1;
+    
+    const basePay = workingHours * settings.hourly_rate * multiplier;
+    const grossPay = basePay + (travelAllowance || 0) + bonus;
+    const tax = grossPay * settings.tax_rate;
+    const netPay = grossPay - tax;
+
+    setPreview({
+      working_hours: workingHours.toFixed(2),
+      bonus: bonus.toFixed(2),
+      gross_pay: grossPay.toFixed(2),
+      tax: tax.toFixed(2),
+      net_pay: netPay.toFixed(2),
+    });
+  }, [startTime, endTime, breakHours, travelAllowance, isPublicHoliday, settings]);
 
   const fetchEntries = async () => {
     try {
