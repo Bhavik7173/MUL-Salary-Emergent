@@ -13,7 +13,8 @@ import {
   Mail,
   Building2,
   Shield,
-  Loader2
+  Loader2,
+  Hourglass
 } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
 import { Button } from '../components/ui/button';
@@ -35,6 +36,7 @@ const settingsSchema = z.object({
   smtp_server: z.string(),
   smtp_port: z.number().min(1).max(65535),
   auto_email_day: z.number().min(1).max(31),
+  manual_azk_adjustment: z.number(),
 });
 
 export default function Settings() {
@@ -54,6 +56,7 @@ export default function Settings() {
       smtp_server: 'smtp.gmail.com',
       smtp_port: 587,
       auto_email_day: 1,
+      manual_azk_adjustment: 0,
     },
   });
 
