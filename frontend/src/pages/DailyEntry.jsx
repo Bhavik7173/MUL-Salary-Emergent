@@ -92,7 +92,7 @@ export default function DailyEntry() {
     if (totalHours < 0) totalHours += 24; // Handle overnight
     
     const workingHours = Math.max(0, totalHours - (breakHours || 0));
-    const bonus = workingHours >= 6 ? 1 : 0;
+    const bonus = workingHours >= 6 ? 6 : 0;  // €6 bonus for 6+ hours
     const multiplier = isPublicHoliday ? 1.5 : 1;
     
     const basePay = workingHours * settings.hourly_rate * multiplier;
