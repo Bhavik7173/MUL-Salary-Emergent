@@ -1,0 +1,189 @@
+{
+  "identity": {
+    "name": "E1",
+    "role": "Creative Designer",
+    "mission": "Create a top 1% financial SaaS application with a professional, trustworthy, and efficient aesthetic.",
+    "principles": [
+      "Fusion over Imitation: Mix Swiss precision with modern SaaS fluidity.",
+      "Emotion First: Trust and Clarity are the core emotions.",
+      "Content is King: Data legibility is paramount.",
+      "Zoom In: Focus on the numbers that matter.",
+      "Negative Space: Use whitespace to reduce cognitive load."
+    ]
+  },
+  "design_system": {
+    "theme": {
+      "primary": "light",
+      "mode_toggle": true,
+      "style": "Professional Financial"
+    },
+    "colors": {
+      "palette_name": "Trust & Precision",
+      "primary": {
+        "light": "#0F172A",
+        "dark": "#F8FAFC",
+        "description": "Deep Obsidian for text and primary actions in light mode."
+      },
+      "accent": {
+        "main": "#2563EB",
+        "hover": "#1D4ED8",
+        "subtle": "#EFF6FF",
+        "description": "Electric Royal Blue for CTAs, active states, and key highlights."
+      },
+      "background": {
+        "light": "#F8FAFC",
+        "dark": "#020617",
+        "paper_light": "#FFFFFF",
+        "paper_dark": "#0F172A"
+      },
+      "status": {
+        "success": "#10B981",
+        "warning": "#F59E0B",
+        "error": "#EF4444",
+        "info": "#3B82F6"
+      },
+      "sidebar": {
+        "light": "#0F172A",
+        "dark": "#020617",
+        "text": "#94A3B8",
+        "active_text": "#FFFFFF",
+        "active_bg": "rgba(255, 255, 255, 0.1)"
+      }
+    },
+    "typography": {
+      "headings": {
+        "font_family": "Manrope, sans-serif",
+        "weights": ["600", "700", "800"],
+        "tracking": "-0.02em",
+        "usage": "Page titles, section headers, KPI values."
+      },
+      "body": {
+        "font_family": "Inter, sans-serif",
+        "weights": ["400", "500"],
+        "usage": "General text, labels, descriptions."
+      },
+      "mono": {
+        "font_family": "JetBrains Mono, monospace",
+        "weights": ["400", "500"],
+        "usage": "Financial data, dates, transaction IDs, tabular numbers."
+      }
+    },
+    "spacing": {
+      "scale": "tailwind",
+      "base_padding": "p-6",
+      "container_padding": "p-8 md:p-12",
+      "section_gap": "gap-8",
+      "component_gap": "gap-4"
+    },
+    "borders": {
+      "radius": {
+        "default": "0.5rem",
+        "card": "0.75rem",
+        "button": "0.5rem"
+      },
+      "width": "1px",
+      "color": "border-border"
+    },
+    "shadows": {
+      "card": "0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)",
+      "hover": "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)",
+      "dropdown": "0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)"
+    }
+  },
+  "layout": {
+    "structure": "Sidebar Navigation + Main Content Area",
+    "sidebar": {
+      "width": "w-64",
+      "position": "fixed left-0 top-0 h-full",
+      "style": "bg-slate-900 text-slate-300 border-r border-slate-800"
+    },
+    "main_content": {
+      "margin": "ml-64",
+      "width": "w-[calc(100%-16rem)]",
+      "padding": "p-8"
+    },
+    "grid_system": {
+      "dashboard": "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6",
+      "form": "grid grid-cols-1 md:grid-cols-2 gap-6"
+    }
+  },
+  "components": {
+    "buttons": {
+      "primary": "bg-blue-600 hover:bg-blue-700 text-white shadow-sm font-medium transition-all active:scale-95",
+      "secondary": "bg-white hover:bg-slate-50 text-slate-900 border border-slate-200 shadow-sm font-medium transition-all active:scale-95",
+      "ghost": "hover:bg-slate-100 text-slate-600 hover:text-slate-900 transition-colors"
+    },
+    "cards": {
+      "style": "bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm rounded-xl overflow-hidden",
+      "header": "p-6 border-b border-slate-100 dark:border-slate-800",
+      "content": "p-6"
+    },
+    "inputs": {
+      "style": "h-10 rounded-md border border-slate-200 bg-white px-3 py-2 text-sm ring-offset-white file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-slate-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+    },
+    "tables": {
+      "style": "w-full caption-bottom text-sm",
+      "header": "border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted",
+      "row": "border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted",
+      "cell": "p-4 align-middle [&:has([role=checkbox])]:pr-0"
+    }
+  },
+  "pages": {
+    "dashboard": {
+      "layout": "Bento Grid",
+      "sections": [
+        {
+          "name": "KPI Cards",
+          "type": "grid-4",
+          "content": ["Total Hours", "Payable Amount", "Tax Estimate", "Net Pay"]
+        },
+        {
+          "name": "Main Chart",
+          "type": "col-span-2 row-span-2",
+          "content": "Monthly Earnings & Hours Bar Chart"
+        },
+        {
+          "name": "Recent Activity",
+          "type": "col-span-2",
+          "content": "List of recent work logs"
+        }
+      ]
+    },
+    "daily_entry": {
+      "layout": "Split View",
+      "left": "Entry Form (Date, Time, Breaks, etc.)",
+      "right": "Live Preview / Calculation Summary"
+    },
+    "settings": {
+      "layout": "Single Column with Sections",
+      "sections": ["Profile", "Preferences (Dark Mode)", "Financial Config (Rates, Tax)"]
+    }
+  },
+  "assets": {
+    "images": [
+      {
+        "category": "background",
+        "url": "https://images.unsplash.com/photo-1763929154494-a3d6eba05282?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1NTJ8MHwxfHNlYXJjaHwxfHxhYnN0cmFjdCUyMGdlb21ldHJpYyUyMGJsdWUlMjB0ZWNobm9sb2d5JTIwYmFja2dyb3VuZCUyMG1pbmltYWxpc3R8ZW58MHx8fHwxNzcwNTY5MjY0fDA&ixlib=rb-4.1.0&q=85",
+        "description": "Abstract Blue Geometric Background for Login/Hero"
+      },
+      {
+        "category": "avatar",
+        "url": "https://images.unsplash.com/photo-1603252112050-5ee77b4b4fde?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Nzh8MHwxfHNlYXJjaHw0fHxwcm9mZXNzaW9uYWwlMjBidXNpbmVzcyUyMHBvcnRyYWl0JTIwYXZhdGFyfGVufDB8fHx8MTc3MDU2OTI3Mnww&ixlib=rb-4.1.0&q=85",
+        "description": "Default User Avatar"
+      }
+    ],
+    "icons": "Lucide React (default)"
+  },
+  "universal_guidelines": [
+    "Use 'Manrope' for all headings and 'Inter' for body text.",
+    "Use 'JetBrains Mono' for all currency and time data.",
+    "Ensure all interactive elements have hover states (text-white on hover for primary buttons).",
+    "Use 24px-32px padding inside cards.",
+    "Never use pure black (#000000). Use Slate-900 or Slate-950.",
+    "Add 'data-testid' to all interactive elements.",
+    "Use 'sonner' for toast notifications.",
+    "Charts must be accessible and use the defined color palette.",
+    "Forms must use 'react-hook-form' and 'zod' for validation (standard Shadcn pattern)."
+  ],
+  "instructions_to_main_agent": "You are building the MUL Salary Tracker. Follow the design system strictly. Use the provided image URLs for placeholders. Implement the Sidebar layout first, then the Dashboard with the Bento grid. Ensure the 'Daily Work Entry' form calculates values in real-time. Use Recharts for the bar charts. The theme is 'Professional Financial' - keep it clean, crisp, and trustworthy."
+}
