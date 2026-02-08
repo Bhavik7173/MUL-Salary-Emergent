@@ -129,36 +129,6 @@ export default function DailyEntry() {
     }
   };
 
-  const calculatePreview = () => {
-    if (!settings) return;
-
-    const { start_time, end_time, break_hours, travel_allowance, is_public_holiday } = watchAll;
-    
-    // Parse times
-    const start = new Date(`2000-01-01T${start_time || '00:00'}`);
-    const end = new Date(`2000-01-01T${end_time || '00:00'}`);
-    
-    let totalHours = (end - start) / 3600000;
-    if (totalHours < 0) totalHours += 24; // Handle overnight
-    
-    const workingHours = Math.max(0, totalHours - (break_hours || 0));
-    const bonus = workingHours >= 6 ? 1 : 0;
-    const multiplier = is_public_holiday ? 1.5 : 1;
-    
-    const basePay = workingHours * settings.hourly_rate * multiplier;
-    const grossPay = basePay + (travel_allowance || 0) + bonus;
-    const tax = grossPay * settings.tax_rate;
-    const netPay = grossPay - tax;
-
-    setPreview({
-      working_hours: workingHours.toFixed(2),
-      bonus: bonus.toFixed(2),
-      gross_pay: grossPay.toFixed(2),
-      tax: tax.toFixed(2),
-      net_pay: netPay.toFixed(2),
-    });
-  };
-
   const onSubmit = async (data) => {
     try {
       if (editingId) {
