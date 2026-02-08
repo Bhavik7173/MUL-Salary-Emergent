@@ -262,12 +262,12 @@ export default function DailyEntry() {
                   <Label>Public Holiday</Label>
                   <div className="flex items-center gap-3 h-10">
                     <Switch
-                      checked={watchAll.is_public_holiday}
+                      checked={isPublicHoliday}
                       onCheckedChange={(checked) => setValue('is_public_holiday', checked)}
                       data-testid="holiday-toggle"
                     />
                     <span className="text-sm text-muted-foreground">
-                      {watchAll.is_public_holiday ? (
+                      {isPublicHoliday ? (
                         <span className="flex items-center gap-1 text-amber-600">
                           <PartyPopper className="w-4 h-4" />
                           1.5x Rate Applied
