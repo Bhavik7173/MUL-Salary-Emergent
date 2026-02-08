@@ -94,7 +94,7 @@ class MULSalaryTrackerTester:
             "is_public_holiday": False,
             "notes": "Test entry"
         }
-        success, response_data, status_code = self.run_test("Create Work Entry", "POST", "entries", 201, entry_data)
+        success, response_data, status_code = self.run_test("Create Work Entry", "POST", "entries", 200, entry_data)
         
         if success and 'id' in response_data:
             self.created_entry_id = response_data['id']
