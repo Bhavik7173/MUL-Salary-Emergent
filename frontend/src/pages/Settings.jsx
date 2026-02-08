@@ -78,6 +78,7 @@ export default function Settings() {
       setValue('smtp_server', data.smtp_server);
       setValue('smtp_port', data.smtp_port);
       setValue('auto_email_day', data.auto_email_day);
+      setValue('manual_azk_adjustment', data.manual_azk_adjustment || 0);
     } catch (error) {
       console.error('Error fetching settings:', error);
     } finally {
